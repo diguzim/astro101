@@ -1,4 +1,4 @@
-import { listProducts } from "../utils/db";
+import { listProducts } from "../../utils/db";
 
 export async function GET() {
   const products = listProducts();
