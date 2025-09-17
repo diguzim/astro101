@@ -1,0 +1,25 @@
+---
+const response = await fetch(`${Astro.url.origin}/api/products`);
+const products = await response.json();
+---
+
+<ul>
+  {
+    products.map((product: any) => (
+      <li>
+        {product.name} (Current Stock: {product.stock})
+      </li>
+    ))
+  }
+</ul>
+<button id="purchase">Purchase</button>
+<script>
+  const button = document.querySelector("#purchase");
+  button?.addEventListener("click", async () => {
+    const randomProductId = Math.floor(Math.random() * 5) + 1;
+    const response = await fetch(
+      `${location.origin}/api/products/${randomProductId}`
+    );
+    await response.json();
+  });
+</script>
